@@ -8,7 +8,7 @@ A feedreader web-application that uses the Jasmine testing library to facilitate
 - [Frontend Nanodegree Feedreader](#frontend-nanodegree-feedreader)
     - [Table of Contents](#table-of-contents)
     - [Getting Started](#getting-started)
-    - [How to Play](#how-to-play)
+    - [How to Use These Files](#how-to-use-these-files)
         - [Overview](#overview)
         - [Instructions](#instructions)
     - [Dependencies](#dependencies)
@@ -33,3 +33,6 @@ A modern browser running JavaScript and the included [Jasmine](http://jasmine.gi
 
 ### Acknowledgements
 See source code for acknowledgements. Many others' ideas were used in creating this game.
+
+### TODO
+Continue adding tests as the code base grows!
