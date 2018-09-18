@@ -50,6 +50,7 @@ $(function() {
             for (feed of allFeeds){
                 //check that there's a name and it's not empty
                 expect(feed.name).toBeDefined;
+                //from https://www.youtube.com/watch?v=7kOBXPbDmyw&feature=youtu.be
                 expect(feed.name).not.toBe("", null);
             }
             
@@ -67,9 +68,9 @@ $(function() {
          */
         it("is hidden by default.", () => {
             //select the "body" element
-            let bodyElement = document.querySelectorAll("body");
+            let bodyElement = document.querySelector("body");
             //check to see if the menu has "menu-hidden" class
-            expect(bodyElement.hasClass("menu-hidden")).toBe(true);
+            expect(bodyElement.classList.contains("menu-hidden")).toBe(true);
         });
 
          /* TODO: Write a test that ensures the menu changes
@@ -77,7 +78,11 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-        it("toggles visibility when clicked", () =>{
+        it("toggles visibility when clicked", () => {
+            let menu = document.querySelector(".menu-icon-link");
+            //from Cranford walkthrough https://matthewcranford.com/feed-reader-walkthrough-part-3-menu-test-suite/
+            menu.click();
+            expect(menu.classList.contains("menu-hidden")).toBe(false);
 
         });
     });
