@@ -126,9 +126,14 @@ $(function() {
         beforeEach((done) => {
             loadFeed(0, () => {
                 // console.log(feed.children[0].innerText);
-                Array.from(feed.children).forEach((entry) => {
-                    firstFeed.push(entry.innerText);
-                });
+                let initialfeed = $('.feed').innerText;
+
+                loadFeed(1, () => {
+                    let finalFeed = $('.feed').innerText;
+                })
+                // Array.from(feed.children).forEach((entry) => {
+                //     firstFeed.push(entry.innerText);
+                // });
                 loadFeed(1, done);
             });
         });
