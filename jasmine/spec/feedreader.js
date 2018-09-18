@@ -13,6 +13,9 @@ $(function() {
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
     */
+    var bodyElement = document.querySelector("body");
+
+
     describe('RSS Feeds', function() {
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
@@ -63,7 +66,7 @@ $(function() {
          */
         it("is hidden by default.", () => {
             //select the "body" element
-            let bodyElement = document.querySelector("body");
+            // let bodyElement = document.querySelector("body");
             //check to see if the menu has "menu-hidden" class
             expect(bodyElement.classList.contains("menu-hidden")).toBe(true);
         });
@@ -99,12 +102,13 @@ $(function() {
 
         it("has at least one .entry element in the .feed container after loadFeed runs", ()=>{
             //grab the whole feed
-            let feed = document.querySelector(".feed");
-            let entry = document.querySelectorAll(".entry-link");
+            // let feed = bodyElement.querySelector(".feed");
+            // let entry = bodyElement.querySelectorAll(".entry-link");
+            const feed = $('.feed .entry');
             // test that there's a feed
             expect(feed.children.length >= 1).toBe(true);
             // test that there is an entry
-            expect(entry.length > 0).toBe(true);
+            // expect(entry.length > 0).toBe(true);
         });
     });
     /* This is a new test suite named "New Feed Selection" */
@@ -120,13 +124,29 @@ $(function() {
         //load the feeds BEFORE
     //     beforeEach((done) => {
         beforeEach((done) => {
-            loadFeed(0);
-            // console.log(feed.children[0].innerText);
-            Array.from(feed.children).forEach((entry) => {
-                firstFeed.push(entry.innerText);
+            loadFeed(0, () => {
+                // console.log(feed.children[0].innerText);
+                Array.from(feed.children).forEach((entry) => {
+                    firstFeed.push(entry.innerText);
+                });
+                loadFeed(1, done);
             });
-            loadFeed(1, done);
         });
+
+        // beforeEach(function(done){
+
+        //     loadFeed(0, function(){
+        
+        //         initialfeed = $('.feed').innerText;
+        
+        //             loadFeed(1, function() {
+        
+        //                 finalFeed = ...          
+        
+        //                 done() ; // call done when variables are fed and tests can begin
+        //             });
+        //     });
+        // });
     
         //from Cranford walkthrough
         it("loads new content", () => {
