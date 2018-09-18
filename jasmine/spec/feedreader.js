@@ -81,9 +81,12 @@ $(function() {
         it("toggles visibility when clicked", () => {
             let menu = document.querySelector(".menu-icon-link");
             //from Cranford walkthrough https://matthewcranford.com/feed-reader-walkthrough-part-3-menu-test-suite/
+            //open the menu
             menu.click();
             expect(menu.classList.contains("menu-hidden")).toBe(false);
-
+            //close the menu
+            menu.click();
+            expect(menu.classList.contains("menu-icon-link")).toBe(true);
         });
     });
     /* TODO: Write a new test suite named "Initial Entries" */
