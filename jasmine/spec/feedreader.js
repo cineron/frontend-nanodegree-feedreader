@@ -130,8 +130,10 @@ $(function() {
         //from Cranford walkthrough
         it("loads new content", () => {
     //         console.log(feed.children[0].innerText);
+            //convert the feed to an array and loop over it
             Array.from(feed.children).forEach((entry, index) => {
-                console.log(entry.innerText, firstFeed[index], entry.inner === firstFeed[index]);
+                // console.log(entry.innerText, firstFeed[index], entry.inner === firstFeed[index]);
+                //check that entries are not equal, therefore new
                 expect(entry.innerText === firstFeed[index]).toBe(false);
             });
         });
