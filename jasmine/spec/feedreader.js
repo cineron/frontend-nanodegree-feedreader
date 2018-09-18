@@ -107,8 +107,9 @@ $(function() {
         });
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
-    describe("New Feed Selection", () => {
-
+        describe("New Feed Selection", () => {
+    // describe("New Feed Selection", () => {
+    
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
@@ -116,17 +117,23 @@ $(function() {
         let feed = document.querySelector(".feed");
         let firstFeed = [];
         //load the feeds BEFORE
+    //     beforeEach((done) => {
         beforeEach((done) => {
             loadFeed(0);
             // console.log(feed.children[0].innerText);
-            Array.from(feed.children).forEach(entry) => {
+            Array.from(feed.children).forEach((entry) => {
                 firstFeed.push(entry.innerText);
             });
             loadFeed(1, done);
         });
-        it("loads new content", () => {
-            console.log(feed.children[0].innerText);
-        });
     
+        //from Cranford walkthrough
+        it("loads new content", () => {
+    //         console.log(feed.children[0].innerText);
+            Array.from(feed.children).forEach((entry, index) => {
+                console.log(entry.innerText, firstFeed[index], entry.inner === firstFeed[index]);
+                expect(entry.innerText === firstFeed[index]).toBe(false);
+            });
+        });
     });
 }());
