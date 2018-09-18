@@ -100,8 +100,11 @@ $(function() {
         it("has at least one .entry element in the .feed container after loadFeed runs", ()=>{
             //grab the whole feed
             let feed = document.querySelector(".feed");
-            // test that there's something there
+            let entry = document.querySelectorAll(".entry-link");
+            // test that there's a feed
             expect(feed.children.length >= 1).toBe(true);
+            // test that there is an entry
+            expect(entry.length > 0).toBe(true);
         });
     });
     /* This is a new test suite named "New Feed Selection" */
