@@ -55,7 +55,7 @@ $(function() {
                 expect(feed.name).not.toBe("", null);
             }
             
-        })
+        });
     });
 
 
@@ -114,42 +114,54 @@ $(function() {
         });
     });
     /* This is a new test suite named "New Feed Selection" */
-        describe("New Feed Selection", () => {
+    describe("New Feed Selection", () => {
     // describe("New Feed Selection", () => {
     
         /* This is a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        let feedAfterFirstLoad;
+        let feedAfterSecondLoad;
         let feed = document.querySelector(".feed");
-        let firstFeed = [];
+        // let firstFeed = [];
         //load the feeds BEFORE
     //     beforeEach((done) => {
         beforeEach((done) => {
             loadFeed(0, () => {
                 // console.log(feed.children[0].innerText);
-                let initialfeed = $('.feed').innerText;
+                // feedAfterFirstLoad = $('.feed').innerText;
+                feedAfterFirstLoad = feed.children[0].innerText;
+                console.log(feedAfterFirstLoad);
 
                 loadFeed(1, () => {
-                    let finalFeed = $('.feed').innerText;
-                })
-                // Array.from(feed.children).forEach((entry) => {
-                //     firstFeed.push(entry.innerText);
-                // });
-                loadFeed(1, done);
+                    // feedAfterSecondLoad = $('.feed').innerText;
+                    feedAfterSecondLoad = feed.children[0].innerText;
+                    console.log(feedAfterSecondLoad);
+                    done();
+                });
             });
         });
+        
+        
+        // let feedAfterFirstLoad;
+        // let feedAfterSecondLoad;
+        // beforeEach(function(done){
+        //     loadFeed(0, function () {
+        //     // great place to get content of feed container
+        //     // you can use jQuery .html or .innerHTML method to do that for You
+        //         loadFeed(1, function () {
+        //         // get content of feed container again
+        //         done();
+        //         });
+        //     });
+        // });
 
         // beforeEach(function(done){
-
         //     loadFeed(0, function(){
-        
         //         initialfeed = $('.feed').innerText;
-        
         //             loadFeed(1, function() {
-        
         //                 finalFeed = ...          
-        
         //                 done() ; // call done when variables are fed and tests can begin
         //             });
         //     });
@@ -157,13 +169,14 @@ $(function() {
     
         //from Cranford walkthrough
         it("loads new content", () => {
-    //         console.log(feed.children[0].innerText);
+            //console.log(feed.children[0].innerText);
+            expect(feedAfterFirstLoad).not.toEqual(feedAfterSecondLoad);
             //convert the feed to an array and loop over it
-            Array.from(feed.children).forEach((entry, index) => {
-                expect(entry.innerText, firstFeed[index], entry.inner === firstFeed[index]);
+            // Array.from(feed.children).forEach((entry, index) => {
+                // expect(entry.innerText, firstFeed[index], entry.inner === firstFeed[index]);
                 //check that entries are not equal, therefore new
-                expect(entry.innerText === firstFeed[index]).toBe(false);
-            });
+                // expect(entry.innerText === firstFeed[index]).toBe(false);
+            // });
         });
     });
 }());
