@@ -1,3 +1,4 @@
+const bodySelection = "body";
 /* feedreader.js
  *
  * This is the spec file that Jasmine will read and contains
@@ -13,7 +14,7 @@ $(function() {
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
     */
-    var bodyElement = document.querySelector("body");
+    const bodyElement = document.querySelector(bodySelection);
 
 
     describe('RSS Feeds', function() {
@@ -77,14 +78,15 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         it("toggles visibility when clicked", () => {
-            let menu = document.querySelector(".menu-icon-link");
+            let menuClick = bodyElement.querySelector(".menu-icon-link");
+            // let menu = bodyElement.querySelector(".menu-hidden");
             //from Cranford walkthrough https://matthewcranford.com/feed-reader-walkthrough-part-3-menu-test-suite/
             //open the menu
-            menu.click();
-            expect(menu.classList.contains("menu-hidden")).toBe(false);
+            menuClick.click();
+            expect(bodyElement.classList.contains("menu-hidden")).toBe(false);
             //close the menu
-            menu.click();
-            expect(menu.classList.contains("menu-icon-link")).toBe(true);
+            menuClick.click();
+            expect(bodyElement.classList.contains("menu-hidden")).toBe(true);
         });
     });
     /* This is a new test suite named "Initial Entries" */
